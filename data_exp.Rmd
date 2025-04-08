@@ -38,7 +38,7 @@ cl_irs_col <- function(df) {
    new_names <- gsub("PetalW", "PetalWidth", new_names)
    
    # Add underscore between parts (e.g., SepalLengthSetosa → Sepal_Length_Setosa)
-   # new_names <- gsub("([a-z])([A-Z])", "\\1_\\2", new_names)
+    new_names <- gsub("([a-z])([A-Z])", "\\1_\\2", new_names)
    
    # Assign the cleaned names back
    names(df) <- new_names
