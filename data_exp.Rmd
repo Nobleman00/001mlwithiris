@@ -1,0 +1,50 @@
+# Understanding the Iris Dataset
+
+```{r}
+# Import necessary libraries
+library(dplyr)
+library(ggplot2)
+library(skimr)
+```
+
+## Loading the Iris dataset
+
+```{r}
+irs<-datasets::iris3
+irs<-data.frame(irs)
+irs
+```
+
+## Dataset Information using `skimr`
+
+```{r}
+# structure of the dataset
+skim(irs)
+```
+
+```{r}
+# Task:Build a function to clean the column names and replace L and W with Length and Width.
+
+cl_irs_col <- function(df) {
+   new_names <- names(df)
+   
+   # Remove dots
+   new_names <- gsub("\\.", "", new_names)
+   
+   # Replace L with Length and W with Width
+   new_names <- gsub("SepalL", "SepalLength", new_names)
+   new_names <- gsub("SepalW", "SepalWidth", new_names)
+   new_names <- gsub("PetalL", "PetalLength", new_names)
+   new_names <- gsub("PetalW", "PetalWidth", new_names)
+   
+   # Add underscore between parts (e.g., SepalLengthSetosa → Sepal_Length_Setosa)
+   # new_names <- gsub("([a-z])([A-Z])", "\\1_\\2", new_names)
+   
+   # Assign the cleaned names back
+   names(df) <- new_names
+   
+   return(df)
+}
+
+cl_irs_col(irs)
+```
