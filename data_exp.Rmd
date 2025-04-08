@@ -15,7 +15,7 @@ irs<-data.frame(irs)
 irs
 ```
 
-## Dataset Information using `skimr`
+\<\<\<\<\<\<\< HEAD \## Dataset Information using `skimr`
 
 ```{r}
 # structure of the dataset
