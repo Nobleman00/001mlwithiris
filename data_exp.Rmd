@@ -47,4 +47,5 @@ cl_irs_col <- function(df) {
 }
 
 cl_irs_col(irs)
+
 ```
