@@ -4,6 +4,12 @@
 
 Project goal is to build a Machine Learning model using the `iris` dataset, which predicts the iris flower type based on the `sepal.length`, `sepal.width`, `petal.width` and `petal.length.`
 
-# Maching Learning Process:
+## The Maching Learning Process goes through:
 
-Building a ML model using the `iris` dataset
+• Data Collection.
+
+• Data Preparation and Evaluation.
+
+• Model Building.
+
+• Model Evaluation.

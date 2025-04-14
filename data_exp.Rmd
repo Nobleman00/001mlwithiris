@@ -22,8 +22,10 @@ irs
 skim(irs)
 ```
 
+### Column Names Transformation
+
 ```{r}
-# Task:Build a function to clean the column names and replace L and W with Length and Width.
+# Task:Build a function to transform column names.
 
 cl_irs_col <- function(df) {
    new_names <- names(df)
@@ -32,10 +34,8 @@ cl_irs_col <- function(df) {
    new_names <- gsub("\\.", "", new_names)
    
    # Replace L with Length and W with Width
-   new_names <- gsub("SepalL", "SepalLength", new_names)
-   new_names <- gsub("SepalW", "SepalWidth", new_names)
-   new_names <- gsub("PetalL", "PetalLength", new_names)
-   new_names <- gsub("PetalW", "PetalWidth", new_names)
+   new_names <- gsub("L", "Length", new_names)
+   new_names <- gsub("W", "Width", new_names)
    
    # Add underscore between parts (e.g., SepalLengthSetosa → Sepal_Length_Setosa)
     new_names <- gsub("([a-z])([A-Z])", "\\1_\\2", new_names)
@@ -46,5 +46,57 @@ cl_irs_col <- function(df) {
    return(df)
 }
 
-cl_irs_col(irs)
+irs_upt<-cl_irs_col(irs)
+```
+
+## Quick Analysis
+
+```{r}
+# Correlation between Sepal length and width of each species.
+
+# for setosa
+setosa_sepal_cor<-cor(irs_upt$SepalLengthSetosa,irs_upt$SepalWidthSetosa)
+
+# for veriscolor
+veriscolor_sepal_cor<-cor(irs_upt$SepalLengthVersicolor,irs_upt$SepalWidthVersicolor)
+
+# for virginica
+virginica_sepal_cor<-cor(irs_upt$SepalLengthVirginica,irs_upt$SepalWidthVirginica)
+
+sepal_cor_values<-c(setosa = setosa_sepal_cor,verisclor = veriscolor_sepal_cor,virginica = virginica_sepal_cor)
+print(sepal_cor_values)
+```
+
+```{r}
+# Correlation between Petal length and width of each species.
+
+# for setosa
+setosa_petal_cor<-cor(irs_upt$PetalLengthSetosa,irs_upt$PetalWidthSetosa)
+
+# for veriscolor
+veriscolor_petal_cor<-cor(irs_upt$PetalLengthVersicolor,irs_upt$PetalWidthVersicolor)
+
+# for virginica
+virginica_petal_cor<-cor(irs_upt$PetalLengthVirginica,irs_upt$PetalWidthVirginica)
+
+petal_cor_values<-c(setosa = setosa_petal_cor,verisclor = veriscolor_petal_cor,virginica = virginica_petal_cor)
+print(petal_cor_values)
+
+```
+
+```{r}
+# Visual Represenation
+plot(irs_upt$SepalLengthSetosa,irs_upt$SepalWidthSetosa,main = "Relationship Between Sepal Length and Width of Setosa Species",xlab = "Sepal Length",ylab = "Sepal Width",pch=20, col="blue")
+```
+
+### Number Distribution of each species
+
+```{r}
+col_hist<-function(col){
+   colors = sample(c("blue", "red", "yellow", "green","brown","orange"), replace = T, size = 1)
+   
+   return(hist(col, col = colors))
+}
+
+sapply(irs_upt,col_hist)
 ```
