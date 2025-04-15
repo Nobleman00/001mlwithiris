@@ -87,6 +87,10 @@ print(petal_cor_values)
 ```{r}
 # Visual Represenation
 plot(irs_upt$SepalLengthSetosa,irs_upt$SepalWidthSetosa,main = "Relationship Between Sepal Length and Width of Setosa Species",xlab = "Sepal Length",ylab = "Sepal Width",pch=20, col="blue")
+
+plot(irs_upt$Sepal_Length_Versicolor,irs_upt$Sepal_Width_Versicolor ,main = "Relationship Between Sepal Length and Width of Veriscolor Species",xlab = "Sepal Length",ylab = "Sepal Width",pch=20, col="blue")
+
+plot(irs_upt$Sepal_Length_Virginica,irs_upt$Sepal_Width_Virginica,main = "Relationship Between Sepal Length and Width of Virginica Species",xlab = "Sepal Length",ylab = "Sepal Width",pch=20, col="blue")
 ```
 
 ### Number Distribution of each species
