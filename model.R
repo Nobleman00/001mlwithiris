@@ -122,9 +122,7 @@ plot_testing_cm<-visualize__confusion_matrix(Model.testing.confusion,
 print(plot_training_cm)
 print(plot_testing_cm)
 
-# Assignment: Use the same method and functions;
-# for evaluation metrics, use the KNN model algorithm and any other model algorithm of choice (criteria - ability to be used on Classification task and the dataset).
-# Create a new model_nameofchoicealgorithm.R file and build there for each model algorithm.
+
 # Feature importance
 Importance<-varImp(Model)
 plot(Importance)
